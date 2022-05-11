@@ -1,0 +1,11 @@
+{
+    "product":[
+        {
+            "id":1,
+            "pname":"chakka",
+            "stock":35,
+            "rate":200
+        }
+    ]
+    
+}

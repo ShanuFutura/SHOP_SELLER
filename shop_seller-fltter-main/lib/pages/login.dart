@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop_seller/pages/all_registration.dart';
 import 'package:shop_seller/pages/customer/customer_dashboard.dart';
 import 'package:shop_seller/pages/shopkeeper/shop_dashboard.dart';
 import 'package:shop_seller/utils/network_service.dart';
@@ -78,7 +79,6 @@ class _SimpleLoginScreenState extends State<SimpleLoginScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
-          
           children: [
             SizedBox(height: screenHeight * .05),
             Image.asset(
@@ -129,7 +129,7 @@ class _SimpleLoginScreenState extends State<SimpleLoginScreen> {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => SimpleRegisterScreen(),
+                  builder: (_) => AllRegister(),
                 ),
               ),
               child: RichText(

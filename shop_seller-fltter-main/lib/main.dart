@@ -13,13 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       scrollBehavior: ScrollBehavior(
-          androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,),
+        androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
+      ),
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        canvasColor: Colors.white,
+        useMaterial3: true,
+
+        primarySwatch: Colors.purple,
+        // canvasColor: Colors.white,
       ),
       home: const SimpleLoginScreen(),
       // home: const ShopDashboard(),

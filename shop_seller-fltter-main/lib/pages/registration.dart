@@ -160,6 +160,7 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                   ),
                   SizedBox(height: screenHeight * .025),
                   InputField(
+                    key: Key('name'),
                     onChanged: (value) {
                       setState(() {
                         name = value;
@@ -172,6 +173,7 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                   ),
                   SizedBox(height: screenHeight * .025),
                   InputField(
+                    key: Key('mail'),
                     onChanged: (value) {
                       setState(() {
                         email = value;
@@ -185,6 +187,7 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                   ),
                   SizedBox(height: screenHeight * .025),
                   InputField(
+                    key: Key('address'),
                     onChanged: (value) {
                       setState(() {
                         address = value;
@@ -234,6 +237,7 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                     ),
                   SizedBox(height: screenHeight * .025),
                   InputField(
+                    key: Key('mobile'),
                     onChanged: (value) {
                       setState(() {
                         mobile = value;
@@ -246,6 +250,7 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                   ),
                   SizedBox(height: screenHeight * .025),
                   InputField(
+                    key: Key('password'),
                     onChanged: (value) {
                       setState(() {
                         password = value;
@@ -258,6 +263,7 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                   ),
                   SizedBox(height: screenHeight * .025),
                   InputField(
+                    key: Key('cpass'),
                     onChanged: (value) {
                       setState(() {
                         confirmPassword = value;
@@ -330,19 +336,20 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
     print(
         'registering with name $name, address $address, mobile $mobile, username $email,password $password,email $email, role $role, upi Id ${upiIdController.text},coordinates ${latlong.text}');
     getData("add_user.php", params: {
-      "name": name,
-      "address": address,
-      "phone": mobile,
-      "username": email,
-      'coordinates': latlong.text.isEmpty ? 'nil' : latlong.text,
-      "password": password,
-      "email": email,
-      "role": role,
-      "upi_id":
-           upiIdController.text.isEmpty
-          ?
-          'shanunanminda27-1@oksbi'
-      : upiIdController.text,
+      "name": 'name',
+      "address": 'address',
+      "phone": 1111111111,
+      "username": 'email@asdd.csf',
+      'coordinates': 12345654321,
+      // latlong.text.isEmpty ? 'nil' : latlong.text,
+      "password": 'password',
+      "email": 'email@asd.asd',
+      "role": 1,
+      "upi_id": 'asdfgn',
+      //  upiIdController.text.isEmpty
+      // ?
+      // 'shanunanminda27-1@oksbi'
+      // : upiIdController.text,
     }).then((value) {
       Fluttertoast.showToast(msg: value['message'])
           .then((value) => Navigator.pop(context));

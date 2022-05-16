@@ -78,6 +78,7 @@ class _SimpleLoginScreenState extends State<SimpleLoginScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
+          
           children: [
             SizedBox(height: screenHeight * .05),
             Image.asset(

@@ -34,6 +34,7 @@ class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: const Text("products"),
         actions: [
@@ -115,6 +116,8 @@ class _AddProductState extends State<AddProduct> {
         height: 400,
         title: "Add Product",
         widget: SingleChildScrollView(
+          
+          
           child: Column(
             children: [
               ImageSelector(

@@ -26,10 +26,10 @@ class _ImageSelectorState extends State<ImageSelector> {
         });
       },
       child: file == null
-          ? Image.asset(
-              "images/img50.png",
-              width: 50,
-              height: 50,
+          ? Image.network(
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxRz_9nC6MmZSVU70VZfqR7yANMsR4z3rvJQ&usqp=CAU",
+              width: 90,
+              height: 90,
             )
           : Image.file(
               file!,

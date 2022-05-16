@@ -3,6 +3,7 @@ import 'package:shop_seller/models/cart_item.dart';
 import 'package:shop_seller/utils/constant.dart';
 import 'package:shop_seller/utils/network_service.dart';
 import 'package:shop_seller/widget/counter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Cart extends StatefulWidget {
   const Cart({Key? key}) : super(key: key);
@@ -16,6 +17,14 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> sendPayment({required double amount}) async {
+      print('called');
+      String upiurl =
+          'upi://pay?pa=shanunanminda27-1@oksbi&pn=shanu&tn=TestingGpay&am=$amount&cu=INR';
+      await launchUrl(Uri.parse(upiurl));
+      return null;
+    }
+
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text("Cart"),
@@ -32,6 +41,8 @@ class _CartState extends State<Cart> {
                   child: Text("Cart is Empty!"),
                 );
               } else {
+                double grandTotal = 0.0;
+                bool isMakingPayment = false;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -41,6 +52,8 @@ class _CartState extends State<Cart> {
                             itemCount: products.length,
                             itemBuilder: (BuildContext context, int index) {
                               CartItem product = products.elementAt(index);
+                              grandTotal =
+                                  double.parse(product.price!) + grandTotal;
 
                               return Card(
                                   child: ListTile(
@@ -72,10 +85,21 @@ class _CartState extends State<Cart> {
                           Expanded(
                             child: ElevatedButton(
                                 onPressed: () {
-                                  getData("place_order.php",
-                                          params: {"user_id": user_id})
-                                      .then((value) {
-                                    setState(() {});
+                                  sendPayment(amount: grandTotal).then((_) {
+                                    setState(() {
+                                      isMakingPayment = true;
+                                    });
+                                    Future.delayed(Duration(seconds: 20))
+                                        .then((_) {
+                                      setState(() {
+                                        isMakingPayment = false;
+                                      });
+                                      getData("place_order.php",
+                                              params: {"user_id": user_id})
+                                          .then((value) {
+                                        setState(() {});
+                                      });
+                                    });
                                   });
                                 },
                                 child: const Text("place order")),

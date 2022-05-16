@@ -31,6 +31,7 @@ class _EditProductState extends State<EditProduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("Edit Product"),
       ),

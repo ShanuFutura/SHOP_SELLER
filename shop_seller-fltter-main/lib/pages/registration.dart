@@ -25,6 +25,7 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
   String role = "1";
 
   TextEditingController latlong = TextEditingController();
+  TextEditingController upiIdController = TextEditingController();
 
   @override
   void initState() {
@@ -204,13 +205,15 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                         Expanded(
                           flex: 4,
                           child: TextField(
+                              textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
+                                labelText: "coordinates",
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12)),
                               ),
                               onChanged: ((value) {
                                 setState(() {
-                                  address = value;
+                                  // address = value;
                                 });
                               }),
                               controller: latlong),
@@ -266,6 +269,20 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
                     obscureText: true,
                     textInputAction: TextInputAction.done,
                   ),
+                  if (role == '1')
+                    SizedBox(
+                      height: screenHeight * .025,
+                    ),
+                  if (role == '1')
+                    TextField(
+                      controller: upiIdController,
+                      decoration: InputDecoration(
+                        label: Text('upi id'),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    ),
                   SizedBox(
                     height: screenHeight * .025,
                   ),
@@ -308,19 +325,24 @@ class _SimpleRegisterScreenState extends State<SimpleRegisterScreen> {
       String? password,
       String? name,
       String? address,
-      String? mobile}) {
+      String? mobile,
+      String? upiId}) {
     print(
-        'registering with name $name, address $address, mobile $mobile, username $email,password $password,email $email, role $role');
+        'registering with name $name, address $address, mobile $mobile, username $email,password $password,email $email, role $role, upi Id ${upiIdController.text},coordinates ${latlong.text}');
     getData("add_user.php", params: {
       "name": name,
       "address": address,
       "phone": mobile,
       "username": email,
-      'coordinates':
-          latlong.text.isEmpty ? 'its user,no coordinates' : latlong.text,
+      'coordinates': latlong.text.isEmpty ? 'nil' : latlong.text,
       "password": password,
       "email": email,
       "role": role,
+      "upi_id":
+           upiIdController.text.isEmpty
+          ?
+          'shanunanminda27-1@oksbi'
+      : upiIdController.text,
     }).then((value) {
       Fluttertoast.showToast(msg: value['message'])
           .then((value) => Navigator.pop(context));

@@ -17,7 +17,7 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> sendPayment({required double amount}) async {
+    Future<void> sendPayment({required double amount,String upiId=''}) async {
       print('called');
       String upiurl =
           'upi://pay?pa=shanunanminda27-1@oksbi&pn=shanu&tn=TestingGpay&am=$amount&cu=INR';

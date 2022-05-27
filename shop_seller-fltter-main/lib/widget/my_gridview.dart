@@ -46,7 +46,7 @@ class _ShopGridState extends State<ShopGrid> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ViewProducts(
-                            shopId: shop.sRegisterId!,
+                            shopId: shop.sRegisterId!,shopName:shop.name!
                           )),
                 );
               },

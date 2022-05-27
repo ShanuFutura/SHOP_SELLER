@@ -5,7 +5,9 @@ import 'package:shop_seller/widget/product_grid.dart';
 
 class ViewProducts extends StatefulWidget {
   String shopId;
-  ViewProducts({Key? key, required this.shopId}) : super(key: key);
+  String shopName;
+  ViewProducts({Key? key, required this.shopId, required this.shopName})
+      : super(key: key);
 
   @override
   _ViewProductsState createState() => _ViewProductsState();
@@ -16,7 +18,7 @@ class _ViewProductsState extends State<ViewProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("View Products"),
+        title: Text(widget.shopName),
       ),
       body: SafeArea(
         child: FutureBuilder(

@@ -115,7 +115,7 @@ class _NearbyShops extends State<NearbyShops> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => ViewProducts(shopId: shop.sRegisterId!),
+            builder: (_) => ViewProducts(shopId: shop.sRegisterId!,shopName: shop.name!,),
           ),
         );
       },

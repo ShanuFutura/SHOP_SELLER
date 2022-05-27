@@ -53,7 +53,7 @@ class _ShopGridState extends State<ShopGrid> {
               child: Stack(
                 children: [
                   Card(
-                    color: Colors.amber,
+                    // color: Colors.amber,
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -97,7 +97,7 @@ class _ShopGridState extends State<ShopGrid> {
                                             horizontal: 4.0),
                                         itemBuilder: (context, _) => Icon(
                                           Icons.star,
-                                          color: Colors.amber,
+                                          // color: Colors.amber,
                                         ),
                                         onRatingUpdate: (rating) {
                                           currentRating = rating;

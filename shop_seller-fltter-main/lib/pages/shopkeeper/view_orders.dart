@@ -64,16 +64,23 @@ class _ViewOrdersState extends State<ViewOrders> {
                                         ));
                               },
                               child: Card(
-                                  color: Colors.amber,
+                                  // color: Colors.amber,
                                   child: ListTile(
-                                    leading: CircleAvatar(
-                                      radius: 30.0,
-                                      backgroundImage: NetworkImage(
-                                        Constants.BASE_URL + order.imageUrl!,
-                                      ),
-                                    ),
-                                    title: Text(order.product!),
-                                    subtitle: Column(
+                                isThreeLine: true,
+                                minVerticalPadding: 10,
+                                leading: CircleAvatar(
+                                  radius: 30.0,
+                                  backgroundImage: NetworkImage(
+                                    Constants.BASE_URL + order.imageUrl!,
+                                  ),
+                                ),
+                                title: Text(order.product!),
+                                subtitle: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       crossAxisAlignment:
@@ -84,7 +91,7 @@ class _ViewOrdersState extends State<ViewOrders> {
                                         Text("quantity : ${order.quantity}")
                                       ],
                                     ),
-                                    trailing: Column(
+                                    Column(
                                       children: [
                                         Text(
                                           " : " + order.name!,
@@ -92,11 +99,14 @@ class _ViewOrdersState extends State<ViewOrders> {
                                               .textTheme
                                               .headline6,
                                         ),
+                                        // Text('data'),
                                         Text("phone : " + order.phone!),
                                         Text("status : Order " + order.status!),
                                       ],
                                     ),
-                                  )),
+                                  ],
+                                ),
+                              )),
                             );
                           }),
                     ),

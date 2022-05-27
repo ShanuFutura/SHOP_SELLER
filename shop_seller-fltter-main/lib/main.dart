@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Flutter Demo',
       theme: ThemeData(
+        cardTheme: CardTheme(elevation: 10),
+        // appBarTheme: AppBarTheme(foregroundColor: Colors.purple),
         useMaterial3: true,
-
+        canvasColor: Colors.white,
         primarySwatch: Colors.purple,
         // canvasColor: Colors.white,
       ),

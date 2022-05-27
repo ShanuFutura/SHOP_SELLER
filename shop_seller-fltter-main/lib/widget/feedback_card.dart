@@ -17,32 +17,27 @@ class FeedbackCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
-        constraints:
-            const BoxConstraints(minHeight: 100, minWidth: double.infinity),
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                Text(
-                  time,
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-              ],
-            ),
-            Text(
-              subtitle,
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(
+                time,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+            ],
+          ),
+          Text(
+            subtitle,
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
+        ],
       ),
     );
   }

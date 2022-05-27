@@ -2,6 +2,7 @@
     package="com.example.shop_seller">
      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
    <application
         android:label="shop_seller"
         android:name="${applicationName}"

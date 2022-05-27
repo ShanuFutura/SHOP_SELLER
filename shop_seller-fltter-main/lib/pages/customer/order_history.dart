@@ -38,38 +38,37 @@ class _OrderHistoryState extends State<OrderHistory> {
                             Order order = orders.elementAt(index);
 
                             return Card(
-                                color: Colors.amber,
+                                // color: Colors.amber,
                                 child: ListTile(
-                                  leading: CircleAvatar(
-                                    radius: 30.0,
-                                    backgroundImage: NetworkImage(
-                                      Constants.BASE_URL + order.imageUrl!,
-                                    ),
+                              leading: CircleAvatar(
+                                radius: 30.0,
+                                backgroundImage: NetworkImage(
+                                  Constants.BASE_URL + order.imageUrl!,
+                                ),
+                              ),
+                              title: Text(order.product!),
+                              subtitle: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(order.price!),
+                                  Text(order.category!),
+                                  Text("quantity : ${order.quantity}")
+                                ],
+                              ),
+                              trailing: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "shop name : " + order.name!,
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
                                   ),
-                                  title: Text(order.product!),
-                                  subtitle: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(order.price!),
-                                      Text(order.category!),
-                                      Text("quantity : ${order.quantity}")
-                                    ],
-                                  ),
-                                  trailing: Column(
-                                    children: [
-                                      Text(
-                                        "shop name : " + order.name!,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline6,
-                                      ),
-                                      Text("phone : " + order.phone!),
-                                      Text("status : Order " + order.status!),
-                                    ],
-                                  ),
-                                ));
+                                  // Text("phone : " + order.phone!),
+                                  Text("status : Order " + order.status!),
+                                ],
+                              ),
+                            ));
                           }),
                     ),
                   ],

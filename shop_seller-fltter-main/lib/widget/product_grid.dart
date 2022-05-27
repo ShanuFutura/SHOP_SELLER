@@ -47,7 +47,7 @@ class _ProductGridState extends State<ProductGrid> {
                 // );
               },
               child: Card(
-                color: Colors.amber,
+                // color: Colors.amber,
                 child: Center(
                     child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -85,21 +85,25 @@ class _ProductGridState extends State<ProductGrid> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "price : " + product.price!,
-                            // style: Theme.of(context).textTheme.subtitle2,
-                          ),
-                          Container(
-                            height: 30,
-                            width: (deviceWidth / 4) - 10,
-                            color: Colors.green,
-                            padding: const EdgeInsets.all(5.0),
-                            child: Marquee
-                                // Text
-                                (
-                              velocity: 30,
-                              text: "category : " + product.category!,
+                          Expanded(
+                            child: Text(
+                              "price : " + product.price!,
                               // style: Theme.of(context).textTheme.subtitle2,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 30,
+                              width: (deviceWidth / 4) - 10,
+                              color: Colors.green,
+                              padding: const EdgeInsets.all(5.0),
+                              child: Marquee
+                                  // Text
+                                  (
+                                velocity: 30,
+                                text: "category : " + product.category!,
+                                // style: Theme.of(context).textTheme.subtitle2,
+                              ),
                             ),
                           ),
                         ],

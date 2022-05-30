@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_seller/models/category.dart';
 import 'package:shop_seller/models/product.dart';
 import 'package:shop_seller/pages/login.dart';
@@ -39,7 +40,9 @@ class _AddProductState extends State<AddProduct> {
         title: const Text("products"),
         actions: [
           IconButton(
-              onPressed: () {
+              onPressed: () async{
+                final spref = await SharedPreferences.getInstance();
+                spref.clear();
                 Route route = MaterialPageRoute(
                     builder: (context) => SimpleLoginScreen());
                 Navigator.pushReplacement(context, route);

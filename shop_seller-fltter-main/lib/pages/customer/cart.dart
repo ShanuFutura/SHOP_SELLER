@@ -17,11 +17,12 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> sendPayment({required double amount,String upiId=''}) async {
+    Future<void> sendPayment(
+        {required double amount, String upiId = ''}) async {
       print('called');
       String upiurl =
           'upi://pay?pa=shanunanminda27-1@oksbi&pn=shanu&tn=TestingGpay&am=$amount&cu=INR';
-      await launchUrl(Uri.parse(upiurl));
+      // await launchUrl(Uri.parse(upiurl));
       return null;
     }
 
@@ -85,24 +86,25 @@ class _CartState extends State<Cart> {
                           Expanded(
                             child: ElevatedButton(
                                 onPressed: () {
+                                  setState(() {
+                                    isMakingPayment = true;
+                                  });
                                   sendPayment(amount: grandTotal).then((_) {
-                                    setState(() {
-                                      isMakingPayment = true;
-                                    });
                                     Future.delayed(Duration(seconds: 20))
                                         .then((_) {
-                                      setState(() {
-                                        isMakingPayment = false;
-                                      });
                                       getData("place_order.php",
                                               params: {"user_id": user_id})
                                           .then((value) {
-                                        setState(() {});
+                                        setState(() {
+                                          isMakingPayment = false;
+                                        });
                                       });
                                     });
                                   });
                                 },
-                                child: const Text("place order")),
+                                child: Text(isMakingPayment
+                                    ? 'proceeding..'
+                                    : 'place order')),
                           ),
                         ],
                       )

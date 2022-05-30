@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop_seller/pages/customer/customer_dashboard.dart';
 import 'package:shop_seller/pages/shopkeeper/shop_dashboard.dart';
 import 'package:shop_seller/testing.dart';
 import '/pages/login.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final spref = await SharedPreferences.getInstance();
+  final user = spref.getString('user') ?? 'nop';
+  runApp(MyApp(user));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp(String this.user, {Key? key}) : super(key: key);
+  final String user;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +30,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         // canvasColor: Colors.white,
       ),
-      home: const SimpleLoginScreen(),
+      home: user == 'nop'
+          ? SimpleLoginScreen()
+          : (user == 'seller' ? ShopDashboard() : CustomerDashboard()),
       // home: const ShopDashboard(),
     );
   }

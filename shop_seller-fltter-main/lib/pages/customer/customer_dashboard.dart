@@ -1,5 +1,6 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_seller/pages/customer/add_feedback.dart';
 import 'package:shop_seller/pages/customer/cart.dart';
 import 'package:shop_seller/pages/customer/fav.dart';
@@ -48,7 +49,9 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
               },
               icon: const Icon(Icons.favorite)),
           IconButton(
-              onPressed: () {
+              onPressed: () async {
+                final spref = await SharedPreferences.getInstance();
+                spref.clear();
                 Route route = MaterialPageRoute(
                     builder: (context) => SimpleLoginScreen());
                 Navigator.pushReplacement(context, route);

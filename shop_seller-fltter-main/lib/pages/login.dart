@@ -161,16 +161,22 @@ class _SimpleLoginScreenState extends State<SimpleLoginScreen> {
       "email": email,
       "password": password,
     }).then((value) async {
+      final spref = await SharedPreferences.getInstance();
       if (value['status'] as bool) {
         // Obtain shared preferences.
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('user_id', value['0']['s_register_id']);
         Fluttertoast.showToast(msg: "welcome.");
+          // spref.setString('regId', 'customer');
+
         if (value['0']['role'] == '2') {
+          spref.setString('user', 'customer');
           Route route =
               MaterialPageRoute(builder: (context) => CustomerDashboard());
           Navigator.pushReplacement(myContext!, route);
         } else {
+          spref.setString('user', 'seller');
+
           Route route =
               MaterialPageRoute(builder: (context) => ShopDashboard());
           Navigator.pushReplacement(myContext!, route);

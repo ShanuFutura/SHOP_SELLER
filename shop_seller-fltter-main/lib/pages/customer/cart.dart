@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_seller/models/cart_item.dart';
+import 'package:shop_seller/models/shop.dart';
 import 'package:shop_seller/utils/constant.dart';
 import 'package:shop_seller/utils/network_service.dart';
 import 'package:shop_seller/widget/counter.dart';
@@ -21,7 +22,7 @@ class _CartState extends State<Cart> {
         {required double amount, String upiId = ''}) async {
       print('called');
       String upiurl =
-          'upi://pay?pa=shanunanminda27-1@oksbi&pn=shanu&tn=TestingGpay&am=$amount&cu=INR';
+          'upi://pay?pa=$upiId&pn=shop_easy&tn=TestingGpay&am=$amount&cu=INR';
       // await launchUrl(Uri.parse(upiurl));
       return null;
     }
@@ -89,7 +90,7 @@ class _CartState extends State<Cart> {
                                   setState(() {
                                     isMakingPayment = true;
                                   });
-                                  sendPayment(amount: grandTotal).then((_) {
+                                  sendPayment(amount: grandTotal, ).then((_) {
                                     Future.delayed(Duration(seconds: 20))
                                         .then((_) {
                                       getData("place_order.php",

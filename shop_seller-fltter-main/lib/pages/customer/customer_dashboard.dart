@@ -32,7 +32,7 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("ShopSeller"),
+        title: Text("Shop Easy"),
         actions: [
           IconButton(
               onPressed: () {

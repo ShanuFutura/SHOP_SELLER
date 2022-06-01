@@ -46,8 +46,7 @@ class _ShopGridState extends State<ShopGrid> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ViewProducts(
-                            shopId: shop.sRegisterId!,shopName:shop.name!
-                          )),
+                          shopId: shop.sRegisterId!, shopName: shop.name!)),
                 );
               },
               child: Stack(
@@ -85,6 +84,8 @@ class _ShopGridState extends State<ShopGrid> {
                           showDialog(
                               context: context,
                               builder: (_) => CustomAlert(
+                                  height:
+                                      MediaQuery.of(context).size.height * .45,
                                   widget: Column(
                                     children: [
                                       RatingBar.builder(

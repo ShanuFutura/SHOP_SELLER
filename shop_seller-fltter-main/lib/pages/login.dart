@@ -157,8 +157,8 @@ class _SimpleLoginScreenState extends State<SimpleLoginScreen> {
   login(String? email, String? password, context) {
     // Route route = MaterialPageRoute(builder: (context) => CustomerDashboard());
     // Navigator.pushReplacement(myContext!, route);
-    getData("login.php", params: {
-      "email": email,
+    getData("login_customer.php", params: {
+      "username": email,
       "password": password,
     }).then((value) async {
       final spref = await SharedPreferences.getInstance();
